@@ -1,0 +1,38 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/static/images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'todo/base.css' %}">
+
+    {% block style %}
+    {% endblock %}
+    <title>home</title>
+</head>
+<body>
+
+
+   <!-- {% if user.is_authenticated %}
+    <h1>login as </h1>
+   
+    {% endif %}-->
+    {% block content %}
+    {% endblock %}
+
+  <!--  <div>
+        {% if user.is_authenticated %}
+        <form action="{%url 'logout' %}" method="post">
+            <button>logout</button>
+            {% csrf_token %}
+        </form>
+        {% endif %}
+    </div>-->
+
+</body>
+</html>

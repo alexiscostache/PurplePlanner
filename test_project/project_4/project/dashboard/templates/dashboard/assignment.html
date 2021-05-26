@@ -1,0 +1,30 @@
+{% extends 'dashboard/teacher.html'  %}
+{% block main %}
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Add Grades</li>
+    </ol>
+     <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-chart-area mr-1"></i>
+            Students on {{course.title}}
+        </div>
+        <div class="card-body">
+            <ul>
+                {% for assignment in assignments %}
+                <li>
+                    <div class="course">
+                        <p>Student: {{assignment.student.user.username}}</p>
+                        <form method="POST" action="{% url 'grading' course.id assignment.title assignment.id %}">
+                            <input type="number" name="grade" max="100" min="0" placeholder="{{assignment.grade}}" />
+                            {% csrf_token %}
+                            <button class="btn btn-primary">Add Grade</button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

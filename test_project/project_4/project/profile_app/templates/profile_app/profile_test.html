@@ -1,0 +1,72 @@
+{% extends "dashboard/student.html" %}
+{% load static %}
+
+
+
+{
+{% block main %}
+<main>
+    <div class="container-fluid">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Profile</li>
+        </ol>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-user"></i>
+                {{user.username}} - Student
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    {% if image %}
+                        <img src="{{image}}" width="128">
+                    {% else %}
+                        <img src=" ../media/profile/images/profilepic.png" width="128">
+                    {% endif %}
+                    <div>
+                        <form method="post"
+                              enctype="multipart/form-data"
+                              action="{% url 'upload_image' %}">
+                            {% csrf_token %}
+                            <input type="file" name="image"/>
+                            <button class="btn btn-primary" type="submit">Submit Image</button>
+                        </form>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" id="profile_loader">
+            <div class="loader">Loading...</div>
+            <!-- <div class="col-xl-6">
+         <div class="card mb-4">
+             <div class="card-header">
+                 <i class="fas fa-chart-area mr-1"></i>
+                 courses
+             </div>
+             <div class="card-body">
+                 <canvas id="myChart_radar_grade" ></canvas>
+             </div>
+         </div>
+     </div>
+     <div class="col-xl-6">
+         <div class="card mb-4">
+             <div class="card-header">
+                 <i class="fas fa-chart-area mr-1"></i>
+                courses
+             </div>
+             <div class="card-body">
+                 <div id="myTable_grade">
+
+                 </div>
+
+             </div>
+         </div>
+     </div>-->
+        </div>
+    </div>
+
+</main>
+{% endblock %}

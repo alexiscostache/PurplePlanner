@@ -1,0 +1,33 @@
+{% extends "dashboard/student.html" %}
+{% block main %}
+<main>
+    <div class="container-fluid">
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+        <div class="card mb-4" id="home_loader"></div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-tasks"></i>
+                Upcoming Assignments
+            </div>
+            <div class="card-body">
+                {% for todo in todos %}
+                <ul>
+                    <li>
+                        <div>
+                            <h4><a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a></h4>
+                            <p>
+                                Progress: {{todo.progress}}
+                                 | Due: {{todo.date_due|date:'M j Y H:i'  }}
+                                {% include 'dashboard/complete.html' %}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+        </div>  
+    </div>
+</main>
+{% endblock %}

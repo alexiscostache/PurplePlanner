@@ -1,0 +1,29 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+<h1>{{course.title}}</h1>
+<p><a href="{% url 'viewcourse' course.id %}">{{course.title}}</a></p>
+<h3>students: </h3>
+<ul>
+    {% for assignment in assignments %}
+    <li>
+        <div class="course">
+            <p>{{assignment.title}}</p>
+            <p>student: {{assignment.student.user.username}}</p>
+            <p>grade: </p>
+            <form method="POST" action="{% url 'grading' course.id assignment.title assignment.id %}">
+
+                <input type="number" name="grade" max="100" min="0" placeholder="{{assignment.grade}}"/>
+                {% csrf_token %}
+                <button>submit</button>
+
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+
+
+</ul>
+
+
+{% endblock %}

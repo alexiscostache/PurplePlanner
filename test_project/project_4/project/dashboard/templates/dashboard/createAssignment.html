@@ -1,0 +1,25 @@
+{% extends 'dashboard/teacher.html'  %}
+{% block main %}
+
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Course: {{course.title}}</li>
+    </ol>
+     <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-chart-area mr-1"></i>
+            Create New Assignment
+        </div>
+        <div class="card-body">
+            <form method="POST">
+			    {{form.as_p}}
+			    {% csrf_token %}
+          <label for="">Due date:</label>
+			    <input type="datetime-local" name="date_due" />
+			    <button class="btn btn-primary">Create</button>
+			</form>
+			<h1 style="color:red">{{error}}</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Assignments</li>
+    </ol>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-tasks"></i>
+                    Upcoming:
+                </div>
+                <div class="card-body">
+                    {% for todo in todos %}
+                    <ul>
+                        <li>
+                            <div>
+                                <h4><a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a></h4>
+                                <p>
+                                    Progress: {{todo.progress}}
+                                     | Due: {{todo.date_due|date:'M j Y H:i'  }}
+                                    {% include 'dashboard/complete.html' %}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-calendar-times"></i>
+                    Overdue:
+                </div>
+                <div class="card-body">
+                    {% for todo in overdues %}
+                    <ul>
+                        <li>
+                            <div>
+                                <h4><a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a></h4>
+                                <p>
+                                    Progress: {{todo.progress}}
+                                     | Due: {{todo.date_due|date:'M j Y H:i'  }}
+                                    {% include 'dashboard/complete.html' %}
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-check"></i>
+                    Completed
+                </div>
+                <div class="card-body">
+                    {% for todo in dones %}
+                    <ul>
+                        <li>
+                            <div>
+                                <h4><a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a></h4>
+                                <p>
+                                    Progress: {{todo.progress}}
+                                     | Due: {{todo.date_due|date:'M j Y H:i'  }}
+                                    
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-times"></i>
+                    Late
+                </div>
+                <div class="card-body">
+                    {% for todo in lates %}
+                    <ul>
+                        <li>
+                            <div>
+                                <h4><a href="{% url 'viewtodo' todo.id %}">{{todo.title}}</a></h4>
+                                <p>
+                                    Progress: {{todo.progress}}
+                                     | Due: {{todo.date_due|date:'M j Y H:i'  }}
+                                    
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

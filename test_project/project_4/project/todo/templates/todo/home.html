@@ -1,0 +1,12 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1>home</h1>
+
+<p>{{user_type}}</p>
+{% if user_type == "ST" %}
+    {% include 'todo/student_home.html' %}
+{% elif user_type == "TR" %}
+ {% include 'todo/teacher_home.html' %}
+{% endif %}
+{% endblock %}

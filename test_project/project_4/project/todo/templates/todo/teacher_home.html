@@ -1,0 +1,13 @@
+
+<h1>teacher</h1>
+
+{% for course in courses %}
+<div class="course">
+    <a href="{% url 'viewcourse' course.id %}">
+        <p>{{course.title}}</p>
+        <p>{{course.description}}</p>
+    </a>
+   
+</div>
+
+{% endfor %}

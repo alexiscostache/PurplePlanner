@@ -1,0 +1,27 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+{% if todo %}
+<h3>{{todo.title}}</h3>
+<p>{{todo.description}}</p>
+<form method="POST">
+
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>update</button>
+</form>
+
+<form method="POST" action="{% url 'completetodo' todo.id %}">
+
+    {% csrf_token %}
+
+    <button>complete</button>
+</form>
+
+{% else %}
+<h1>{{error}}</h1>
+{% endif %}
+
+<a href="{% url 'home' %}">current</a>
+{% endblock %}

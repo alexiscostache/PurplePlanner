@@ -1,0 +1,18 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1>assignment</h1>
+
+
+<form method="POST">
+
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="datetime-local" name="date_due"/>
+    <button>submit</button>
+
+</form>
+<h1 style="color:red">{{error}}</h1>
+<br />
+
+{% endblock %}

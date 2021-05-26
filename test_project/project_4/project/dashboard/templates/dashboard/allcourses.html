@@ -1,0 +1,47 @@
+<div>
+	{% for course in courses %}
+	<div class="course">
+		<h4><a href="{% url 'viewcourse' course.id %}">{{course.title}}</a></h4>
+		<p>{{course.description}}</p><hr>
+	</div>
+	{% endfor %}
+	<button id="btnStart" type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">Create New Course</button>
+	<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <h3 class="modal-title" id="formModalLabel">Create Course</h3>
+		            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+		                <span aria-hidden="true">&times;</span>
+		            </button>
+		        </div>
+				<form id="courseForm" method="post" action="{% url 'createcourse' %}">
+					{% csrf_token %}
+					<input name="users" value="{{myuser.id}}" type="hidden"/>
+					<div class="modal-body">
+						<div class="form-group row">
+							<label for="courseName" class="col-sm-6 col-form-label">
+								Course Name
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="courseName" placeholder="Name" name="title" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="courseDesc" class="col-sm-6 col-form-label">
+								Description
+							</label>
+							<div class="col-sm-6">
+								<textarea id="courseDesc" class="form-control" placeholder="Description" rows="4" name="description" required></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Create</button>
+					</div>
+				</form>
+		    </div>
+		</div>
+	</div>
+</div>

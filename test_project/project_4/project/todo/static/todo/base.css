@@ -1,0 +1,82 @@
+html, body {
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+.boduContainer{
+       background-image: url("/static/images/uom12.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+}
+.container {
+    position:absolute;
+    align-content: center;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+ 
+}
+
+p.error {
+    color: red;
+}
+
+.card {
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: #660099;
+}
+        .card.signup {
+            height: 450px;
+        }
+.card-header {
+    color: white;
+}
+
+.input-group-prepend span {
+    width: 40px;
+    background-color: #FFC333;
+    color: black;
+    border: 0;
+}
+
+.remember {
+    color: white;
+}
+
+    .remember input {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+        margin-right: 5px;
+    }
+
+.login_btn {
+    color: black;
+    background-color: #FFC333;
+    width: 100px;
+}
+.signup_btn {
+    color: black;
+    background-color: #FFC333;
+    width: 100px;
+}
+
+.links1 {
+    color: white;
+}
+
+    .links1 a {
+        margin-left: 4px;
+        color: #FFC333;
+    }
+
+.links2 a {
+    color: #FFC333;
+}

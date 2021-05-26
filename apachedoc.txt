@@ -1,0 +1,47 @@
+Below process was achieved using csimage virtual machine, so possibly will require some tinkering for installation on container.
+
+1. Install the following:
+
+sudo apt-get install apache2
+sudo apt-get install libapache2-mod-wsgi-py3
+sudo apt-get install python3-pip
+sudo -H python3 -m pip install django
+sudo -H python3 -m pip install django-cors-headers
+sudo apt-get install python3-mysqldb
+
+
+2. Find the apache2 "apache2.conf" file, should be located in /etc/apache2/apache2.conf
+Add the following to the file, updating the paths to the project as necessary:
+
+LoadModule wsgi_module /usr/lib/apache2/modules/mod_wsgi.so
+
+WSGIScriptAlias / /first_group_project/test_project/project_4/project/project/wsgi.py
+WSGIPythonPath /first_group_project/test_project/project_4/project
+
+<Directory /first_group_project/test_project/project_4/project>
+<Files wsgi.py>
+	Require all granted
+</Files>
+</Directory>
+ServerName 127.0.0.1
+
+Alias /static/ /first_group_project/test_project/project_4/project/staticfiles/
+Alias /media/ /first_group_project/test_project/project_4/project/media/
+
+<Directory /first_group_project/test_project/project_4/project/staticfiles>
+Require all granted
+</Directory>
+<Directory /first_group_project/test_project/project_4/project/media>
+Require all granted
+</Directory>
+
+3. Run the command
+
+sudo service apache2 restart
+
+to start the server, and then check that the localhost displays the project.
+If there are any issues, running
+
+sudo tail -100 /var/log/apache2/error.log
+
+prints an error log which should give some idea of the problem.

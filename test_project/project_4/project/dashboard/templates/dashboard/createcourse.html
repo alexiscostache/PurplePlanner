@@ -1,0 +1,14 @@
+{% extends 'dashboard/teacher.html'  %}
+{% block main %}
+<h1>create course</h1>
+<form method="POST">
+
+    {{form.as_p}}
+    {% csrf_token %}
+
+    <button>submit</button>
+
+</form>
+<h1 style="color:red">{{error}}</h1>
+
+{% endblock %}

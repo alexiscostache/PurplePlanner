@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'completetodo' todo.id %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button class="btn btn-primary">Submit Assignment</button>
+</form>

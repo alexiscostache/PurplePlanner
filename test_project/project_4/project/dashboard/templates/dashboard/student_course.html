@@ -1,0 +1,21 @@
+{% extends "dashboard/student.html" %}
+{% block main %}
+
+<div class="container-fluid">
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">My Courses</li>
+    </ol>
+
+    {% for course in courses %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-info"></i>
+            <a href="{% url 'viewtodofromcourse' course.id %}">{{course.title}}</a>
+        </div>
+        <div class="card-body">
+        	{{course.description}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

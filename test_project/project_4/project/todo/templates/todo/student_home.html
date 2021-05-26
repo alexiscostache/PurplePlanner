@@ -1,0 +1,81 @@
+
+<h1>student</h1>
+
+<h3>todos: </h3>
+<ul>
+    {% for todo in todos %}
+
+    <li>
+        <div>
+            <p>
+                {{todo.title}}
+
+            </p>
+            <p>
+                <label>progress: {{todo.progress}}</label>
+                {{todo.date_due|date:'M j Y H:i'  }}
+                <form method="POST" action="{% url 'completetodo' todo.id %}">
+
+                    {% csrf_token %}
+
+                    <button>complete</button>
+                </form>
+            </p>
+
+            <p><a href="{% url 'viewtodo' todo.id %}">click</a></p>
+        </div>
+
+    </li>
+    {% endfor %}
+
+</ul>
+
+<h3>done: </h3>
+<ul>
+    {% for todo in dones %}
+
+    <li>
+        <div>
+            <p>
+                {{todo.title}}
+
+            </p>
+            <p>
+                <label>progress: {{todo.progress}}</label>
+                <label>grade {{todo.grade}}</label>
+                {{todo.date_due|date:'M j Y H:i'  }}
+                {{todo.date_complete|date:'M j Y H:i'  }}
+            </p>
+
+
+        </div>
+
+    </li>
+    {% endfor %}
+
+</ul>
+<h3>overdue: </h3>
+<ul>
+    {% for todo in overdues %}
+
+    <li>
+        <div>
+            <p>
+                {{todo.title}}
+
+            </p>
+            <p>
+                <label>progress: {{todo.progress}}</label>
+                <label>grade {{todo.grade}}</label>
+                {{todo.date_due|date:'M j Y H:i'  }}
+                {{todo.date_complete|date:'M j Y H:i'  }}
+            </p>
+
+
+        </div>
+
+    </li>
+    {% endfor %}
+
+</ul>
+

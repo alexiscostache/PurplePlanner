@@ -1,0 +1,9 @@
+To construct container using dockerfile:
+
+1. Ensure dockerfile is in the same directory as first_group_project
+2. Run
+
+docker build . -t purple-container
+docker run -p 80:80 -it purple-container
+
+3. Connect to localhost in your web browser
